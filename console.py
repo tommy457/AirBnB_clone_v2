@@ -128,20 +128,19 @@ class HBNBCommand(cmd.Cmd):
 
         new_instance = HBNBCommand.classes[params[0]]()
 
-        storage.save()
         for param in params[1:]:
             param = param.split("=")
             key = param[0]
             value = param[1]
 
             if re.search(r'^"(.*?)"$', value):
-                value = str(value[1:-1].replace("_", " "))
-            elif re.search(r'^\d+\.\d+$', value):
-                value = float(value)
-            elif re.search(r'^\d+$', value):
-                value = int(value)
+                value = value.strip('"')
+                value = value.replace("_", " ")
+                setattr(new_instance, key, str(value))
+            else:
+                setattr(new_instance, key, eval(value))
 
-            setattr(new_instance, key, value)
+        new_instance.save()
         print(new_instance.id)
 
     def help_create(self):
