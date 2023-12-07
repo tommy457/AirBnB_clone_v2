@@ -17,7 +17,6 @@ def do_deploy(archive_path):
     file_name_with_ext = archive_path.split("/")[-1]
     file_name = file_name_with_ext.split(".")[0]
 
-
     task_1 = put(archive_path, "/tmp/")
     if task_1.failed:
         return False
