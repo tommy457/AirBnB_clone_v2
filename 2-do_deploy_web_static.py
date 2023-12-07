@@ -5,8 +5,6 @@ from os.path import isfile
 from fabric import task
 
 env.hosts = ['54.236.24.86', '18.233.63.71']
-env.user = 'ubuntu'
-env.ssh_config_path = "~/.ssh/shcool"
 
 
 @task
