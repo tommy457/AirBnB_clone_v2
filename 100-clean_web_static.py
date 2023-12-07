@@ -17,8 +17,9 @@ def do_clean(number=0):
 
     paths = sorted(os.listdir("versions"))
     with lcd("versions"):
-        for file_ in paths[idx:]:
-            local("rm ./{}".format(file_))
+        if idx < len(paths):
+            for file_ in paths[idx:]:
+                local("rm ./{}".format(file_))
 
     with cd("/data/web_static/releases"):
         paths = run("ls -tr").split()
