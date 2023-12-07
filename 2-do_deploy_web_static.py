@@ -2,12 +2,10 @@
 """Module to deploy an archive"""
 from fabric.api import put, run, env
 from os.path import isfile
-from fabric import task
 
 env.hosts = ['54.236.24.86', '18.233.63.71']
 
 
-@task
 def do_deploy(archive_path):
     """Distributes an archive to your web servers"""
 
@@ -30,15 +28,23 @@ def do_deploy(archive_path):
     if task_3.failed:
         return False
 
-    task_4 = run("rm -fr /tmp/{}".format(file_name_with_ext))
+    task_4 = run("rm -rf /tmp/{}".format(file_name_with_ext))
     if task_4.failed:
         return False
 
-    task_5 = run("rm -f /data/web_static/current")
+    task7 = run('mv /data/web_static/releases/{}/web_static/* /data/web_static/releases/{}/'
+            .format(file_name, file_name))
+    if task7.failed:
+        return False
+
+    result = run("rm -rf /data/web_static/releases/{}/web_static".format(
+        file_name))
+
+    task_5 = run("rm -rf /data/web_static/current")
     if task_5.failed:
         return False
 
-    task_6 = run("ln -s /data/web_static/current /data/web_static/releases/{}"
+    task_6 = run("ln -s /data/web_static/releases/{} /data/web_static/current"
                  .format(file_name))
     if task_6.failed:
         return False
