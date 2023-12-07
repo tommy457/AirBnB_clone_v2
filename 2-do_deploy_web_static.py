@@ -32,8 +32,8 @@ def do_deploy(archive_path):
     if task_4.failed:
         return False
 
-    task7 = run('mv /data/web_static/releases/{}/web_static/* /data/web_static/releases/{}/'
-            .format(file_name, file_name))
+    task7 = run('mv /data/web_static/releases/{}/web_static/* \
+            /data/web_static/releases/{}/'.format(file_name, file_name))
     if task7.failed:
         return False
 
