@@ -28,5 +28,5 @@ def do_clean(number=0):
             if "web_static_" in file_:
                 files.append(file_)
         if idx < len(files):
-            for file_ in files[idx:]:
+            for file_ in files[:-idx]:
                 run("rm -rf ./{}".format(file_))
