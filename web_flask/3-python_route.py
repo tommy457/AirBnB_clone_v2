@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Module for starts a Flask web application"""
 from flask import Flask
 from markupsafe import escape
 
