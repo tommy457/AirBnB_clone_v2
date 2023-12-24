@@ -31,7 +31,7 @@ def c(text):
 def show(text="is cool"):
     """Displays python followed by the value of the text"""
     text = escape(text.replace("_", " "))
-    return "python {}".format(text)
+    return "Python {}".format(text)
 
 
 if __name__ == "__main__":
