@@ -22,7 +22,6 @@ place_amenity = Table('place_amenity', metadata,
                           nullable=False))
 
 
-
 class Place(BaseModel, Base):
     """ A place to stay """
     __tablename__ = 'places'
@@ -41,7 +40,11 @@ class Place(BaseModel, Base):
     if getenv("HBNB_TYPE_STORAGE") == "db":
         reviews = relationship("Review", backref="place")
         amenities = relationship(
-            "Amenity", back_populates="place_amenities", secondary=place_amenity, viewonly=False)
+            "Amenity",
+            back_populates="place_amenities",
+            secondary=place_amenity,
+            viewonly=False
+            )
 
     else:
         @property
