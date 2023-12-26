@@ -1,4 +1,4 @@
-i<!DOCTYPE html>
+<!DOCTYPE html>
 <HTML lang="en">
     <HEAD>
         <TITLE>HBNB</TITLE>
@@ -6,10 +6,10 @@ i<!DOCTYPE html>
     <BODY>
         <H1>States</H1>
         <UL>
-        {% for key, state in states.items() %}
+        {% for key, state in states.items()|sort(attribute='name') %}
             <LI>{{ state.id }}: <B>{{ state.name }}</B>
                 <UL>
-                    {% for city in state.cities %}
+                    {% for city in state.cities|sort(attribute='name') %}
                     <LI>{{ city.id }}: <B>{{ city.name }}</B></LI>
                     {% endfor %}
                 </UL>
