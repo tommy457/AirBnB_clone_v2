@@ -19,7 +19,7 @@ def states_list():
 def cities_by_state_id(id):
     """Display a list of cities by state id"""
     states = storage.all(State)
-    state = states.get(f"State.{id}", "")
+    state = states.get("State.{}".format(id), "")
     return render_template("9-states.html", flag=False, state=state)
 
 
