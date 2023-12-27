@@ -23,7 +23,6 @@ def cities_by_state_id(id):
     return render_template("9-states.html", state=state)
 
 
-
 @app.teardown_appcontext
 def teardown(error):
     storage.close()
