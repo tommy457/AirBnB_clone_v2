@@ -8,7 +8,7 @@
         <H1>States</H1>
         <UL>
         {% for state_ in states.values()|sort(attribute="name") %}
-            <LI>{{ state_.id }}: <B>{{ state_.name }}</B></LI>
+            <LI>{{ state_.name }}: <B>{{ state_.id }}</B></LI>
         {% endfor %}
         </UL>
     {% elif state and not flag%}
