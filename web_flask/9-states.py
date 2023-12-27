@@ -12,7 +12,7 @@ app = Flask(__name__)
 def states_list():
     """Display a list of states"""
     states = storage.all(State)
-    return render_template("7-states_list.html", states=states)
+    return render_template("9-states.html", flag=True, states=states)
 
 
 @app.route("/states/<id>", strict_slashes=False)
@@ -20,7 +20,7 @@ def cities_by_state_id(id):
     """Display a list of cities by state id"""
     states = storage.all(State)
     state = states.get(f"State.{id}", "")
-    return render_template("9-states.html", state=state)
+    return render_template("9-states.html", flag=False, state=state)
 
 
 @app.teardown_appcontext
