@@ -19,8 +19,9 @@ def states_list():
 def cities_by_state_id(id):
     """Display a list of cities by state id"""
     states = storage.all(State)
-    state = states[f"State.{id}"]
+    state = states.get(f"State.{id}", "")
     return render_template("9-states.html", state=state)
+
 
 
 @app.teardown_appcontext
