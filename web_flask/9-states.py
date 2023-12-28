@@ -18,9 +18,11 @@ def states_list():
 @app.route("/states/<id>", strict_slashes=False)
 def cities_by_state_id(id):
     """Display a list of cities by state id"""
-    states = storage.all(State)
-    state = states.get("State.{}".format(id), "")
-    return render_template("9-states.html", flag=False, state=state)
+    states = storage.all(State).values()
+    for state in states:
+        if state.id == id:
+            return render_template("9-states.html", state=state)
+    return render_template("9-states.html")
 
 
 @app.teardown_appcontext
