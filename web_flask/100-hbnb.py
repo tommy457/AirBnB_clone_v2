@@ -33,4 +33,4 @@ def teardown(error):
 
 if __name__ == "__main__":
     """Entry point runs the server"""
-    app.run(host="0.0.0.0", debug=True)
+    app.run(host="0.0.0.0")
