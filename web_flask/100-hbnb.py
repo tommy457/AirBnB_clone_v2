@@ -12,14 +12,13 @@ app = Flask(__name__)
 
 
 @app.route("/hbnb", strict_slashes=False)
-def hbnb_filters():
+def hbnb():
     """Display a list of states, cities, places and amenities"""
     states = storage.all(State)
     amenities = storage.all(Amenity)
     places = storage.all(Place)
 
     return render_template("100-hbnb.html",
-                           flag=True,
                            states=states,
                            places=places,
                            amenities=amenities
